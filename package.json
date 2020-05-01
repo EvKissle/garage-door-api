@@ -20,7 +20,9 @@
     "test": "mocha --recursive -t 10000 && npm run lint",
     "test-coveralls": "istanbul cover _mocha --report lcovonly -- --recursive -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "migrate": "./bin/migrate",
-    "postinstall": "npm run migrate up"
+    "postinstall": "npm run migrate up",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "amqplib-easy": "^5.0.0",
@@ -39,7 +41,8 @@
     "knex": "^0.14.2",
     "moment": "^2.20.1",
     "pg": "^7.4.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "chance": "^1.0.13",
@@ -57,5 +60,6 @@
     "mocha": "^4.1.0",
     "should": "^13.2.0",
     "supertest": "^3.0.0"
-  }
+  },
+  "snyk": true
 }
